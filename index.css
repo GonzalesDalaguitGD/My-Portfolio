@@ -1,24 +1,3 @@
-/* =========================
-   GLOBAL
-========================= */
-:root {
-    /* Main backgrounds */
-    --background: #050816;
-    --surface: #0a1024;
-    --surface-light: #101b35;
-
-    /* Primary accent colors */
-    --primary: #38bdf8;
-    --primary-dark: #0284c7;
-    --blue: #6366f1;
-
-    /* Text colors */
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-
-    /* Borders and effects */
-    --border: rgba(56, 189, 248, 0.20);
-}
 
 
 * {
@@ -35,20 +14,24 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-    color: #111111;
+    background: #000000;
+    color: #FFFFFF;
 }
 
-
 /* =========================
-   NAVBAR
+   BLACK & VIOLET NAVBAR
 ========================= */
 
 .navbar {
     width: 100%;
     height: 65px;
 
-    background: #008f83;
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        #10071c 50%,
+        #080510 100%
+    );
 
     display: flex;
     align-items: center;
@@ -62,16 +45,28 @@ body {
 
     z-index: 1000;
 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+
+    box-shadow:
+        0 4px 20px rgba(139, 92, 246, 0.08);
 }
 
 
 /* LOGO */
 
 .logo {
-    color: white;
+    color: #A855F7;
     font-size: 28px;
     font-weight: 700;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    color: #C084FC;
+    text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
 }
 
 
@@ -84,284 +79,300 @@ body {
 }
 
 .navbar nav a {
-    color: white;
+    position: relative;
+
+    color: #D1C5DF;
 
     font-size: 17px;
     font-weight: 600;
 
-    transition: 0.3s;
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
 }
+
+
+/* VIOLET HOVER */
 
 .navbar nav a:hover {
-    color: #b9fff7;
+    color: #C084FC;
+
+    text-shadow:
+        0 0 12px rgba(168, 85, 247, 0.45);
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* VIOLET UNDERLINE */
+
+.navbar nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #8B5CF6,
+        #D946EF
+    );
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.3s ease;
+}
+
+.navbar nav a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* ACTIVE NAVIGATION LINK */
+
+.navbar nav a.active {
+    color: #C084FC;
+
+    text-shadow:
+        0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.navbar nav a.active::after {
+    transform: scaleX(1);
+}
+
+/* ==========================================
+   HOME — BLACK & VIOLET THEME
+========================================== */
 
 .home {
-
     min-height: 100vh;
-
     display: flex;
     align-items: center;
-
     justify-content: center;
-
     gap: 70px;
-
     padding: 100px 8% 50px;
 
-    background:#080d13;
+    background: linear-gradient(
+        135deg,
+        #12091F 0%,
+        #080510 50%,
+        #000000 100%
+    );
+
+    color: #FFFFFF;
 }
 
 
-/* =========================
+/* ==========================================
    PROFILE IMAGE
-========================= */
+========================================== */
 
 .home-image {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
-
 .image-circle {
-
     width: 350px;
     height: 350px;
 
     border-radius: 50%;
-
     overflow: hidden;
 
-    background: #008f83;
+    background: #100B18;
 
-    border: 8px solid #ffffff;
+    border: 3px solid #A855F7;
 
     box-shadow:
-        0 0 20px rgba(0, 126, 143, 0.35),
-        0 0 45px rgba(0, 143, 131, 0.18);
+        0 0 20px rgba(168, 85, 247, 0.25),
+        0 0 45px rgba(139, 92, 246, 0.15);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
+.image-circle:hover {
+    border-color: #C084FC;
+
+    box-shadow:
+        0 0 25px rgba(168, 85, 247, 0.4),
+        0 0 55px rgba(139, 92, 246, 0.22);
+}
 
 .image-circle img {
-
     width: 100%;
     height: 100%;
 
     object-fit: cover;
+    object-position: center;
 
     display: block;
 }
 
 
-/* =========================
+/* ==========================================
    HOME CONTENT
-========================= */
+========================================== */
 
 .home-content {
-
     max-width: 700px;
+    min-width: 0;
 }
-
 
 .home-content h3 {
-
     font-size: 32px;
-
     margin-bottom: 5px;
-
     font-weight: 700;
-
-    color: white;
+    color: #FFFFFF;
 }
-
 
 .home-content h1 {
-
     font-size: 55px;
-
     line-height: 1.1;
-
     margin-bottom: 8px;
-
     font-weight: 800;
-
-    color: white;
+    color: #FFFFFF;
 }
-
 
 .home-content h2 {
-
     font-size: 30px;
-
     margin-bottom: 18px;
-
     font-weight: 700;
-
-    color: white;
+    color: #FFFFFF;
 }
-
 
 .home-content h2 span {
-
-    color: #008f83;
-
+    color: #A855F7;
 }
-
 
 .home-content p {
-
     font-size: 17px;
-
-    line-height: 1.5;
-
+    line-height: 1.7;
     max-width: 650px;
-
     margin-bottom: 25px;
-
-    color: white;
+    color: #D1C5DF;
 }
 
 
-/* =========================
+/* ==========================================
+   CHANGING TEXT
+========================================== */
+
+#changing-text {
+    display: inline-block;
+    color: #A855F7;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+#changing-text.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+#changing-text.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================
    SOCIAL ICONS
-========================= */
+========================================== */
 
 .social-icons {
-
     display: flex;
-
     gap: 16px;
-
     margin-bottom: 25px;
 }
 
-
 .social-icons a {
-
     width: 42px;
     height: 42px;
 
-    border: 2px solid #008f83;
-
+    border: 1px solid #A855F7;
     border-radius: 50%;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    color: #008f83;
-
+    color: #C084FC;
     font-size: 18px;
 
-    transition: 0.3s;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-
 .social-icons a:hover {
-
-    background: #008f83;
-
-    color: white;
+    background: #A855F7;
+    color: #FFFFFF;
 
     transform: translateY(-3px);
 
     box-shadow:
-        0 5px 15px rgba(0, 143, 131, 0.25);
+        0 5px 20px rgba(168, 85, 247, 0.3);
 }
 
 
-/* =========================
+/* ==========================================
    CV BUTTON
-========================= */
+========================================== */
 
 .cv-button {
-
     display: inline-block;
 
     padding: 12px 28px;
 
-    background: #008f83;
+    background: linear-gradient(
+        135deg,
+        #8B5CF6,
+        #A855F7
+    );
 
-    color: black;
+    color: #FFFFFF;
 
+    border: 1px solid #A855F7;
     border-radius: 25px;
 
     font-size: 16px;
-
     font-weight: 700;
 
-    transition: 0.3s;
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-
 .cv-button:hover {
-
-    background: #00FFFF;
+    background: linear-gradient(
+        135deg,
+        #A855F7,
+        #C084FC
+    );
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 5px 15px rgba(0, 143, 131, 0.3);
+        0 5px 20px rgba(168, 85, 247, 0.3);
 }
 
 
-/* =========================
-   OTHER SECTIONS
-========================= */
-
-.dummy-section {
-
-    min-height: 100vh;
-
-    padding: 120px 10%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-}
-
-
-.dummy-section:nth-child(even) {
-    background: #f5fafa;
-}
-
-
-.dummy-section h2 {
-
-    font-size: 40px;
-
-    color: #008f83;
-
-    margin-bottom: 20px;
-}
-
-
-.dummy-section p {
-
-    max-width: 650px;
-
-    font-size: 18px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
 
 @media (max-width: 900px) {
 
@@ -377,120 +388,88 @@ body {
         font-size: 14px;
     }
 
-
     .home {
-
         flex-direction: column;
-
         text-align: center;
-
         gap: 40px;
-
         padding-top: 120px;
     }
 
-
     .home-content {
-
         display: flex;
-
         flex-direction: column;
-
         align-items: center;
     }
-
 
     .home-content h1 {
         font-size: 45px;
     }
 
-
     .home-content h2 {
         font-size: 25px;
     }
-
 }
 
 
 @media (max-width: 650px) {
 
     .navbar {
-
         height: auto;
-
         padding: 15px 20px;
-
         flex-direction: column;
-
         gap: 12px;
     }
-
 
     .navbar nav {
-
         gap: 12px;
-
         flex-wrap: wrap;
-
         justify-content: center;
     }
-
 
     .navbar nav a {
         font-size: 13px;
     }
 
-
     .home {
-
         padding-top: 150px;
     }
 
-
     .image-circle {
-
         width: 260px;
         height: 260px;
     }
-
 
     .home-content h3 {
         font-size: 25px;
     }
 
-
     .home-content h1 {
         font-size: 38px;
     }
-
 
     .home-content h2 {
         font-size: 22px;
     }
 
-
     .home-content p {
         font-size: 15px;
     }
-
 }
 
-#changing-text {
-    color: #008f83;
-    display: inline-block;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
 
-#changing-text.fade-out {
-    opacity: 0;
-    transform: translateY(10px);
-}
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
 
-#changing-text.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
+@media (prefers-reduced-motion: reduce) {
 
+    .image-circle,
+    .social-icons a,
+    .cv-button,
+    #changing-text {
+        transition: none;
+    }
+}
 /* =========================
    ABOUT SECTION
 ========================= */
@@ -1110,6 +1089,605 @@ body {
     }
 }
 
+/* ==========================================
+   CREDENTIALS & ACHIEVEMENTS
+========================================== */
+
+.credentials-section {
+    position: relative;
+    padding: 90px 8% 100px;
+    background: #0a1625;
+    color: #ffffff;
+    overflow: hidden;
+    scroll-margin-top: 80px;
+}
+
+.credentials-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+/* Subtle background glow */
+
+.credentials-section::before {
+    content: "";
+    position: absolute;
+    top: 100px;
+    left: -180px;
+    width: 350px;
+    height: 350px;
+    background: rgba(0, 191, 255, 0.06);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.credentials-section::after {
+    content: "";
+    position: absolute;
+    right: -180px;
+    bottom: 100px;
+    width: 350px;
+    height: 350px;
+    background: rgba(0, 100, 255, 0.05);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   SECTION TITLE
+========================================== */
+
+.credentials-section .section-title {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 55px;
+    text-align: center;
+}
+
+.credentials-section .section-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #00bfff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.credentials-section .section-title h2 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.credentials-section .section-title h2 span {
+    color: #00bfff;
+}
+
+.credentials-section .section-title p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #a9bbce;
+    font-size: 0.98rem;
+    line-height: 1.9;
+}
+
+
+/* ==========================================
+   SUBSECTION HEADINGS
+========================================== */
+
+.credentials-subheading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 55px 0 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 191, 255, 0.18);
+}
+
+.credentials-subheading-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 55px;
+    height: 55px;
+    background: rgba(0, 191, 255, 0.09);
+    border: 1px solid rgba(0, 191, 255, 0.3);
+    border-radius: 12px;
+    color: #00bfff;
+    font-size: 1.4rem;
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.05);
+}
+
+.credentials-subheading h3 {
+    margin: 0 0 7px;
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.credentials-subheading h3 span {
+    color: #00bfff;
+}
+
+.credentials-subheading p {
+    margin: 0;
+    color: #8fa6bd;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.achievements-heading {
+    margin-top: 85px;
+}
+
+
+/* ==========================================
+   CERTIFICATION GRID
+========================================== */
+
+.credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+
+/* ==========================================
+   CERTIFICATION CARDS
+========================================== */
+
+.credential-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: linear-gradient(
+        145deg,
+        #0e2033 0%,
+        #0a1726 100%
+    );
+    border: 1px solid rgba(0, 191, 255, 0.18);
+    border-radius: 14px;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.credential-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        #00bfff,
+        #0077ff,
+        #00bfff
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: 2;
+}
+
+.credential-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0, 191, 255, 0.65);
+    box-shadow: 0 15px 35px rgba(0, 191, 255, 0.1);
+}
+
+.credential-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* ==========================================
+   CERTIFICATE IMAGE
+========================================== */
+
+.credential-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 210px;
+    padding: 14px;
+    overflow: hidden;
+    background: #10243a;
+    border-bottom: 1px solid rgba(0, 191, 255, 0.16);
+}
+
+.credential-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.credential-card:hover .credential-image img {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================
+   CERTIFICATE DETAILS
+========================================== */
+
+.credential-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    padding: 24px;
+}
+
+.credential-category {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 6px 10px;
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.2);
+    border-radius: 5px;
+    color: #00bfff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.credential-content h4 {
+    margin: 0 0 15px;
+    color: #ffffff;
+    font-size: 1.12rem;
+    font-weight: 700;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.credential-issuer,
+.credential-date {
+    margin: 0 0 10px;
+    color: #9db1c6;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.credential-issuer i,
+.credential-date i {
+    width: 20px;
+    color: #00bfff;
+}
+
+
+/* ==========================================
+   VIEW CERTIFICATE BUTTON
+========================================== */
+
+.credential-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: auto;
+    padding: 11px 16px;
+    background: rgba(0, 191, 255, 0.05);
+    border: 1px solid #00bfff;
+    border-radius: 6px;
+    color: #00bfff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.credential-btn:hover {
+    background: #00bfff;
+    color: #071321;
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.25);
+}
+
+/* ==========================================
+   ACHIEVEMENT CERTIFICATE IMAGE
+========================================== */
+
+.achievement-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 210px;
+    padding: 14px;
+    overflow: hidden;
+    background: #10243a;
+    border-bottom: 1px solid rgba(0, 191, 255, 0.16);
+    box-sizing: border-box;
+}
+
+.achievement-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.achievement-card:hover .achievement-image img {
+    transform: scale(1.04);
+}
+
+.achievement-view {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(3, 13, 27, 0.78);
+    color: #00bfff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover .achievement-view,
+.achievement-view:focus-visible {
+    opacity: 1;
+}
+
+.achievement-view:hover {
+    color: #ffffff;
+}
+
+/* ==========================================
+   ACHIEVEMENTS GRID
+========================================== */
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+
+/* ==========================================
+   ACHIEVEMENT CARDS
+========================================== */
+
+.achievement-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+    background: linear-gradient(
+        145deg,
+        #0e2033 0%,
+        #0a1726 100%
+    );
+    border: 1px solid rgba(0, 191, 255, 0.18);
+    border-radius: 14px;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.achievement-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        #00bfff,
+        #0077ff,
+        #00bfff
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0, 191, 255, 0.65);
+    box-shadow: 0 15px 35px rgba(0, 191, 255, 0.1);
+}
+
+.achievement-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* ==========================================
+   ACHIEVEMENT ICON
+========================================== */
+
+.achievement-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    background: rgba(0, 191, 255, 0.09);
+    border: 1px solid rgba(0, 191, 255, 0.3);
+    border-radius: 12px;
+    color: #00bfff;
+    font-size: 1.6rem;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.achievement-card:hover .achievement-icon {
+    background: #00bfff;
+    color: #071321;
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+}
+
+
+/* ==========================================
+   ACHIEVEMENT CONTENT
+========================================== */
+
+.achievement-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.achievement-year {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #00bfff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.achievement-content h4 {
+    margin: 0 0 13px;
+    color: #ffffff;
+    font-size: 1.12rem;
+    font-weight: 700;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.achievement-organization {
+    margin: 0 0 15px;
+    color: #00bfff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.achievement-description {
+    margin: 0;
+    color: #9db1c6;
+    font-size: 0.88rem;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 1000px) {
+    .credentials-grid,
+    .achievements-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .credentials-section {
+        padding: 65px 6% 75px;
+    }
+
+    .credentials-section .section-title {
+        margin-bottom: 40px;
+    }
+
+    .credentials-subheading {
+        gap: 13px;
+        margin-top: 40px;
+    }
+
+    .credentials-subheading h3 {
+        font-size: 1.2rem;
+    }
+
+    .credentials-subheading-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+    }
+
+    .credentials-grid,
+    .achievements-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .credential-image {
+        height: 230px;
+    }
+
+    .credential-content {
+        min-height: 220px;
+    }
+
+    .achievement-card {
+        padding: 24px 22px;
+    }
+
+    .achievements-heading {
+        margin-top: 60px;
+    }
+}
+
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .credential-card,
+    .credential-card::before,
+    .credential-image img,
+    .credential-btn,
+    .achievement-card,
+    .achievement-card::before,
+    .achievement-icon {
+        transition: none;
+    }
+
+    .credential-card:hover,
+    .achievement-card:hover {
+        transform: none;
+    }
+}
 
 
  /* =========================
