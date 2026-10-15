@@ -1,38 +1,52 @@
-const roles = [
-    "Frontend Developer",
-    "Digital Artist",
-    "Multimedia Creator",
-    
+const typingText = document.getElementById("typing-text");
+
+const titles = [
+    "Aspiring Cybersecurity Analyst",
+    "Aspiring IT Professional",
+    "Web Developer",
+    "Threat Intelligence Enthusiast"
 ];
 
-let index = 0;
+let titleIndex = 0;
+let characterIndex = 0;
+let deleting = false;
 
-const changingText = document.getElementById("changing-text");
+function typeTitle() {
+    const currentTitle = titles[titleIndex];
 
-setInterval(() => {
+    if (deleting) {
+        characterIndex--;
+    } else {
+        characterIndex++;
+    }
 
-    // Fade out
-    changingText.classList.add("fade-out");
+    typingText.textContent = currentTitle.substring(
+        0,
+        characterIndex
+    );
 
-    setTimeout(() => {
+    let delay = deleting ? 35 : 75;
 
-        // Change the text
-        index++;
+    if (!deleting && characterIndex === currentTitle.length) {
+        deleting = true;
+        delay = 1800;
+    } else if (deleting && characterIndex === 0) {
+        deleting = false;
 
-        if (index >= roles.length) {
-            index = 0;
-        }
+        titleIndex = (titleIndex + 1) % titles.length;
 
-        changingText.textContent = roles[index];
+        delay = 350;
+    }
 
-        // Fade back in
-        changingText.classList.remove("fade-out");
-        changingText.classList.add("fade-in");
+    window.setTimeout(typeTitle, delay);
+}
 
-        setTimeout(() => {
-            changingText.classList.remove("fade-in");
-        }, 400);
+const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
 
-    }, 400);
-
-}, 3000);
+if (!reduceMotion) {
+    typeTitle();
+} else {
+    typingText.textContent = titles[0];
+}
